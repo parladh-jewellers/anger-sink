@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #0a0a0a;
+    cursor: crosshair;
+}
+
+/* Canvas fullscreen */
+#explosionCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+}
+
+/* Screen shake animation */
+.shake {
+    animation: shake 0.15s linear;
+}
+
+@keyframes shake {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-4px, 3px); }
+    50%  { transform: translate(4px, -3px); }
+    75%  { transform: translate(-3px, -4px); }
+    100% { transform: translate(0, 0); }
+}
