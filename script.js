@@ -12,6 +12,16 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
+const colorPalettes = [
+    ['#ff2d2d', '#ff6a00', '#ffffff'], // anger
+    ['#ff004c', '#ff9f1c', '#ffffff'], // hot
+    ['#ff3b3b', '#ffd166', '#ffffff'], // energy
+    ['#ff1e56', '#ffac41', '#ffffff']  // intense
+];
+
+let currentPaletteIndex = 0;
+let lastPaletteChange = Date.now();
+
 // ==========================================
 // AUDIO SETUP (NO FILES)
 // ==========================================
@@ -52,8 +62,8 @@ function Particle(x, y, force) {
 
     this.size = Math.random() * 4 + 2;
 
-    const colors = ['#ff0000', '#ff4500', '#ff8800', '#ffffff'];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
+    const palette = colorPalettes[currentPaletteIndex];
+this.color = palette[Math.floor(Math.random() * palette.length)];
 
     this.life = 1;
     this.decay = Math.random() * 0.02 + 0.015;
@@ -174,6 +184,11 @@ canvas.addEventListener('touchstart', e => {
 // ==========================================
 // ANIMATION LOOP
 // ==========================================
+if (Date.now() - lastPaletteChange > 25000) {
+    currentPaletteIndex =
+        (currentPaletteIndex + 1) % colorPalettes.length;
+    lastPaletteChange = Date.now();
+}
 
 function animate() {
     ctx.fillStyle = collapsing

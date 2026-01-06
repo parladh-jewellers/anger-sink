@@ -35,3 +35,15 @@ body {
     75%  { transform: translate(-3px, -4px); }
     100% { transform: translate(0, 0); }
 }
+
+#label {
+    position: fixed;
+    bottom: 14px;
+    right: 16px;
+    font-family: system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+    user-select: none;
+}
